@@ -12,8 +12,11 @@ export default defineConfig({
   dva: {
     hmr: true,
   },
-  history: {
-    type: 'browser',
+  layout: {
+    name: 'Ant Design Pro',
+    locale: true,
+    siderWidth: 208,
+    ...defaultSettings,
   },
   locale: {
     // default zh-CN
@@ -23,7 +26,7 @@ export default defineConfig({
     baseNavigator: true,
   },
   dynamicImport: {
-    loading: '@/components/PageLoading/index',
+    loading: '@ant-design/pro-layout/es/PageLoading',
   },
   targets: {
     ie: 11,
@@ -34,13 +37,13 @@ export default defineConfig({
   theme: {
     'primary-color': defaultSettings.primaryColor,
   },
+  esbuild: {},
   title: false,
   ignoreMomentLocale: true,
   proxy: proxy[REACT_APP_ENV || 'dev'],
   manifest: {
     basePath: '/',
   },
-  esbuild: {},
   // https://github.com/zthxxx/react-dev-inspector
   plugins: ['react-dev-inspector/plugins/umi/react-inspector'],
   inspectorConfig: {
@@ -48,5 +51,8 @@ export default defineConfig({
     exclude: [],
     babelPlugins: [],
     babelOptions: {},
+  },
+  resolve: {
+    includes: ['src/components'],
   },
 });
